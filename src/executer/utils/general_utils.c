@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 11:44:53 by malena-b          #+#    #+#             */
-/*   Updated: 2024/06/27 12:04:01 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 12:56:32 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/mshell_exec.h"
+#include "./../../../inc/minishell.h"
 
 void	ft_free_mat(char **mat)
 {

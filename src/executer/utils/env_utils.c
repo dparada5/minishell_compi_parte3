@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 12:18:29 by malena-b          #+#    #+#             */
-/*   Updated: 2024/06/27 12:03:56 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 13:08:30 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/mshell_exec.h"
+#include "./../../../inc/minishell.h"
 
 t_env	*ft_get_envvar(t_env *env, char *var_name)
 {
@@ -72,7 +72,7 @@ void	ft_save_env_mat(t_minishell *mshll)
 	char	*join_aux;
 
 	if (mshll->env_mat)
-		ft_free_mat(mshll->env_mat);
+		mshll->env_mat = ft_free_matrix(mshll->env_mat);
 	mshll->env_mat = NULL;
 	size =0;
 	env_runner = mshll->env;

@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:56:13 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:04:10 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 15:07:40 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/mshell_exec.h"
+#include "./../../inc/minishell.h"
 
 int	ft_check_for_builtins(t_minishell *mshll, t_cmds *cmd)
 {
@@ -28,7 +28,7 @@ int	ft_check_for_builtins(t_minishell *mshll, t_cmds *cmd)
 	else if (ft_strncmp(cmds_flags[0], "exit", len) == 0)
 		ft_exit(0, mshll);
 	else if (ft_strncmp(cmds_flags[0], "export", len) == 0 && !cmds_flags[1])
-		ft_export_print(mshll->exp);
+		ft_export_print(&mshll->exp, NULL, NULL, NULL);
 	else if (ft_strncmp(cmds_flags[0], "export", len) == 0 && cmds_flags[1])
 		ft_export_insert(mshll, cmds_flags[1]);
 	else if (ft_strncmp(cmds_flags[0], "pwd", len) == 0)
@@ -42,7 +42,7 @@ int	ft_check_for_builtins(t_minishell *mshll, t_cmds *cmd)
 
 //void	ft_factory(t_minishell *mshll, )
 
-int	ft_kindergarden(t_minishell *mshll, t_cmds *cmd, int *pipe_fd)
+void	ft_kindergarden(t_minishell *mshll, t_cmds *cmd, int *pipe_fd)
 {
 	char	*exec_path;
 
@@ -60,11 +60,11 @@ int	ft_kindergarden(t_minishell *mshll, t_cmds *cmd, int *pipe_fd)
 		dup2(cmd->fd_out, 1);
 	else
 		dup2(pipe_fd[1], 1);
-	if (ft_check_for_builtins(mshll, cmd))
-		exit(0); //PORHACER comprobar si los hijos tiene que liberar la memoria de las estructuras o si eso es solo el padre
+ //PORHACER comprobar si los hijos tiene que liberar la memoria de las estructuras o si eso es solo el padre
 	exec_path = ft_get_exec_path(mshll, cmd->cmds);
 	ft_save_env_mat(mshll);
 	execve(exec_path, mshll->cmds->cmds_flags, mshll->env_mat);
+	
 }
 
 void	ft_bedroom(t_minishell *mshll, int	pipes_left)
@@ -77,11 +77,18 @@ void	ft_bedroom(t_minishell *mshll, int	pipes_left)
 	runner = mshll->cmds;
 	while (pipes_left >= 0)
 	{
-		pid = fork();
-		if (pid == -1)
-			return ;//PORHACER añadir gestión en este caso de error
-		if (pid == 0)
-			ft_kindergarden(mshll, runner, pipe_fd);
+		if (ft_check_for_builtins(mshll, runner))
+			;
+		else
+		{
+			pid = fork();
+			
+			if (pid == -1)
+				return ;//PORHACER añadir gestión en este caso de error
+			if (pid == 0)
+				ft_kindergarden(mshll, runner, pipe_fd);
+			
+		}
 		runner = runner->next;
 		pipes_left--;
 	}

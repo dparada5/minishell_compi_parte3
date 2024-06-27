@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 13:00:17 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:01:13 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 14:55:28 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../inc/minishell.h"
+#include "./../../../inc/minishell.h"
 
 void	file_descriptor(t_cmds *cmds, t_token *tokens, t_minishell *minishell)
 {

@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:55:29 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:03:24 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 13:20:49 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/mshell_exec.h"
+#include "./../../../inc/minishell.h"
 
 void	ft_echo(t_cmds *cmd)
 {
@@ -29,6 +29,7 @@ void	ft_echo(t_cmds *cmd)
 		ft_putstr_fd(cmd->cmds_flags[i], 1);
 		if (cmd->cmds_flags[i + 1])
 			write (1, " ", 1);
+		i++;
 	}
 	if (!nnl_flag)
 		ft_putstr_fd("\n", 1);

@@ -6,21 +6,21 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 11:58:58 by malena-b          #+#    #+#             */
-/*   Updated: 2024/06/27 12:11:03 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 12:57:20 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MSHELL_EXEC_H
 # define MSHELL_EXEC_H
 
-// # include "./libft.h"
 # include <signal.h>
-# include "./minishell.h"
+// # include "minishell.h"
 
 //funciones de delfi que no tengo, solo para que no se queje de errores el código
 // void	ft_free_minishell(t_minishell *minishell);
 // t_env	**ft_lstadd_back_env(t_env **lst, t_env *new);
 
+void	ft_executor(t_minishell *mshll);
 //---------------------------------ENV UTILS---------------------------------//
 t_env	*ft_get_envvar(t_env *env, char *var_name);
 int		ft_change_envvar(t_env *env, char *var_name, char *new_value);

@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 09:37:30 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:01:38 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 14:55:47 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../inc/minishell.h"
+#include "./../../../inc/minishell.h"
 
 static char	*val_error(t_minishell *minishell, char *line, int *i, int l)
 {

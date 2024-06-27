@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokens_utils.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 11:56:09 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:56:36 by dparada          ###   ########.fr       */
+/*   Created: 2024/05/14 11:40:10 by dparada           #+#    #+#             */
+/*   Updated: 2024/06/27 12:44:00 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/minishell.h"
+#include "./../../minishell.h"
+//912
 
-int	ft_pipes_count(t_minishell *mshll)
+int	main(int argc, char **argv, char **env)
 {
-	t_token	*runner;
-	int		pipes;
+	t_minishell	*minishell;
 
-	runner = mshll->tokens;
-	pipes = 0;
-	while (runner)
+	(void)argv;
+	if (argc == 1)
 	{
-		if (runner->token == T_P)
-			pipes++;
-		runner = runner->next;
+		minishell = malloc(sizeof(t_minishell));
+		if (!minishell)
+			msj_error(MALLOC_FAILED, minishell, 0);
+		init_ev_exp(minishell, env);
+		init_minishell(minishell);
 	}
-	return (pipes);
 }

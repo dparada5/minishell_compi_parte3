@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:58:49 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:01:36 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 14:55:42 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../inc/minishell.h"
+#include "./../../../inc/minishell.h"
 
 char	*is_not_expandable(char *line, int *i)
 {
