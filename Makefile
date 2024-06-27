@@ -6,7 +6,7 @@
 #    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 11:04:19 by dparada           #+#    #+#              #
-#    Updated: 2024/06/27 12:05:04 by dparada          ###   ########.fr        #
+#    Updated: 2024/06/27 12:18:26 by dparada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,12 +31,13 @@ CYAN    = \033[37;1m
 BOLD	= \033[1m
 RED		= \033[31;1m
 
-SRC_FILES = 
-			
-cmds_create cmds_utils create_cmd_matrix redirecc\
-create_token token_utils tokens expand expand_types\
-env free prints  states utils\
-init main
+SRC_FILES = executer/built_ins/cd executer/built_ins/echo executer/built_ins/env executer/built_ins/exit \
+	executer/built_ins/export executer/built_ins/pwd executer/built_ins/unset executer/utils/env_utils \
+	executer/utils/exec_utils executer/utils/general_utils executer/utils/tokens_utils executer/executor \
+	parser/cmds_create parser/cmds_utils parser/create_cmd_matrix parser/redirecc\
+	parser/create_token parser/token_utils parser/tokens parser/expand parser/expand_types\
+	parser/env parser/free parser/prints  parser/states parser/utils\
+	parser/init parser/main
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o,$(SRC_FILES)))
