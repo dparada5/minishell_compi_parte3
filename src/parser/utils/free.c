@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
+/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:50:58 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 14:13:39 by malena-b         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:06:33 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_lstclear_cmds(t_cmds *lst)
 			close(aux->fd_in);
 		if (aux->fd_out != 1)
 			close(aux->fd_out);
-		if (aux->flag == 1)
+		if (aux->heredoc == 1)
 			unlink(".here_doc.tmp");
 		aux->cmds = NULL;
 		if (aux->cmds_flags)

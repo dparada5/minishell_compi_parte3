@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
+/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:29:02 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 14:33:48 by malena-b         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:05:23 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MINISHELL_H
 
 # include "./../lib/LIBFT/libft.h"
-// # include "./mshell_exec.h"
 # include <readline/readline.h>
 # include <readline/history.h>
 #include <sys/types.h>
@@ -29,8 +28,6 @@
 # define M      "\033[1;35m"   /* Bold Magenta */
 # define C      "\033[1;36m"   /* Bold Cyan */
 # define W      "\033[1;37m"   /* Bold White */
-
-/*tanselmo y misaguir estuvieron aquí :)*/
 
 # define ERROR_FD	"No such file or directory.\n"
 # define ERROR_EOF 	"syntax error: unexpected end of file\n"
@@ -78,7 +75,8 @@ typedef struct s_cmds
 	int				fd_in;
 	int				fd_out;
 	int				index;
-	int				flag;
+	int				error;
+	int				heredoc;
 	int				executor;
 	struct s_cmds	*next;
 }				t_cmds;

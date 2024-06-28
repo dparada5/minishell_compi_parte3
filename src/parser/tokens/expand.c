@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
+/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 09:37:30 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 12:52:48 by malena-b         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:21:42 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	*expansion(char *line, t_minishell *minishell)
 		i = 0;
 		while (line[i])
 		{	
-			if (i == 0 && line[i] == '~' && line[i + 1] == '\0')
+			if (ft_strcmp(line, "~") == 0)
 				line = check_var(minishell, line, NULL, &i);
 			if (line[i] == '$')
 				line = check_var(minishell, line, NULL, &i);

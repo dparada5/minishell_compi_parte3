@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 13:00:17 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 11:14:11 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 17:08:20 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	file_descriptor(t_cmds *cmds, t_token *tokens, t_minishell *minishell)
 	t_token	*aux;
 
 	aux = tokens;
+	cmds->error = 0;
 	while (aux && aux->token != T_P)
 	{
 		if (aux->token == T_DG)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
+/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:56:13 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 14:36:15 by malena-b         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:10:03 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_kindergarden(t_minishell *mshll, t_cmds *cmd, int *pipe_fd)
 {
 	char	*exec_path;
 
-	if (!ft_strlen(cmd->cmds) && cmd->flag == 1)
+	if (!ft_strlen(cmd->cmds) && cmd->executor == 1)
 		exit (0);//PORHACER comprobar si los hijos tiene que liberar la memoria de las estructuras o si eso es solo el padre
 	if (!cmd->index)
 		close(pipe_fd[0]);
