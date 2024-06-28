@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 09:37:30 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 12:33:50 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 12:47:26 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,8 @@ t_env *aux_env, int *i)
 	char	*new_string;
 
 	if (line[*i] == '~')
-	{
-		line = ft_strdup()
-		aux = get_var("$HOME", 0, 0, minishell);
-	}
-	else
-		aux = get_var(line, i, *i, minishell);
+		line = ft_strdup("$HOME");
+	aux = get_var(line, i, *i, minishell);
 	ft_putstr_fd("aca\n", 2);
 	aux_env = ft_get_envvar(minishell->env, aux);
 	if (line[*i - 1] == '\\')
