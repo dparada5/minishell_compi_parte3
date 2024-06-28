@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:56:13 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 10:45:26 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 11:06:46 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,18 @@ void	ft_bedroom(t_minishell *mshll, int	pipes_left)
 	runner = mshll->cmds;
 	while (pipes_left >= 0)
 	{
-		pid = fork();
-		if (pid == -1)
-			return ;//PORHACER añadir gestión en este caso de error
-		if (pid == 0)
-			ft_kindergarden(mshll, runner, pipe_fd);
+		if (ft_check_for_builtins(mshll, runner))
+			;
+		else
+		{
+			pid = fork();
+			
+			if (pid == -1)
+				return ;//PORHACER añadir gestión en este caso de error
+			if (pid == 0)
+				ft_kindergarden(mshll, runner, pipe_fd);
+			
+		}
 		runner = runner->next;
 		pipes_left--;
 	}

@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:55:29 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 10:34:28 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 11:03:38 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_echo(t_cmds *cmd)
 		ft_putstr_fd(cmd->cmds_flags[i], 1);
 		if (cmd->cmds_flags[i + 1])
 			write (1, " ", 1);
+		i++;
 	}
 	if (!nnl_flag)
 		ft_putstr_fd("\n", 1);
