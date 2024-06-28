@@ -6,7 +6,7 @@
 #    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 11:04:19 by dparada           #+#    #+#              #
-#    Updated: 2024/06/28 10:43:24 by dparada          ###   ########.fr        #
+#    Updated: 2024/06/28 10:51:37 by dparada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ $(NAME): compiling $(OBJ)
 		@echo "$(MAGENTA)Minishell compiled!$(RESET)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(MINISHELL_H)| $(OBJF)
-		@mkdir -p $(dir $@)º
+		@mkdir -p $(dir $@)
 		@echo "$(BLUE)Compiling: $(RESET)$(notdir $<)"
 		@$(CC) $(CFLAGS) -c $< -o $@
 
