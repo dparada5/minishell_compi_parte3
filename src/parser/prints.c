@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:09:16 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 14:56:04 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 12:01:46 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/minishell.h"
+#include "./../../inc/minishell.h"
 
 void	printf_cmds(t_cmds *cmds)
 {

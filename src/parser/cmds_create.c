@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:46:28 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 14:55:21 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 12:01:18 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/minishell.h"
+#include "./../../inc/minishell.h"
 
 static char	**create_mat(t_minishell *minishell)
 {

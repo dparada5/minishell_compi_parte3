@@ -6,15 +6,14 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:29:02 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 10:44:35 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 10:37:14 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "./../lib/LIBFT/libft.h"
-// # include "./mshell_exec.h"
+# include "lib/LIBFT/libft.h"
 # include <readline/readline.h>
 # include <readline/history.h>
 
@@ -103,8 +102,6 @@ typedef struct s_minishell
 	int			flag;
 }				t_minishell;
 
-
-//-------------------------PARSER--------------------------------------
 void	init_ev_exp(t_minishell *minishell, char **env);
 void	init_minishell(t_minishell *minishell);
 //------------------variable expand--------------------------
@@ -142,7 +139,6 @@ void	token_next(t_token *token, t_minishell *minishell);
 void	states(char *line, t_minishell *minishell);
 //------------------env--------------------------------------
 t_env	*save_env(char **env, int i, t_minishell *minishell);
-t_env	**ft_lstadd_back_env(t_env **lst, t_env *new);
 //------------------utils------------------------------------
 void	msj_error(char *str, t_minishell *minishell, int val_error);
 //------------------memory free------------------------------
@@ -154,33 +150,4 @@ void	print_env(t_env *env);
 void	printf_cmds(t_cmds *cmds);
 void	print_state(t_state *state);
 t_env	*ft_get_envvar(t_env *env, char *var_name);
-
-//--------------------EXECUTOR------------------------------------
-void	ft_executor(t_minishell *mshll);
-//---------------------------------ENV UTILS---------------------------------//
-t_env	*ft_get_envvar(t_env *env, char *var_name);
-int		ft_change_envvar(t_env *env, char *var_name, char *new_value);
-void	ft_swap_envnodes(t_env *prev, t_env *act, t_env *next, t_env *last);
-t_env	*new_env_exp(char *key, char *content);
-void	ft_save_env_mat(t_minishell *mshll);
-
-//---------------------------------EXEC UTILS--------------------------------//
-char	*ft_get_exec_path(t_minishell *mshll, char *cmd);
-void	ft_set_cmds_index(t_minishell *mshll);
-
-//--------------------------------TOKENS UTILS-------------------------------//
-int		ft_pipes_count(t_minishell *mshll);
-
-//--------------------------------GENERAL UTILS------------------------------//
-void	ft_free_mat(char **mat);
-
-//----------------------------------BUILTINS---------------------------------//
-int		ft_cd(t_minishell *minishell, t_env *env, int error_check);
-void	ft_echo(t_cmds *cmd);
-void	ft_env(t_env *env);
-void	ft_exit(int error_code, t_minishell *minishell);
-void	ft_export_print(t_env **exp, t_env *prev_node, t_env *swap_aux, t_env *run);
-void	ft_export_insert(t_minishell *mshll, char *str);
-void	ft_pwd(void);
-void	ft_unset(t_minishell *mshll, char *key_to_delete);
 #endif

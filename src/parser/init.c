@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:40:10 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 13:12:52 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:49:38 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	init_minishell(t_minishell *minishell)
 			minishell->line = readline("minishell$ ");
 			continue ;
 		}
-		// if (ft_strcmp("exit", minishell->line) == 0)
-		// {
-		// 	ft_free_minishell(minishell, 1);
-		// 	write(1, "exit\n", 5);
-		// 	exit (0);
-		// }
+		if (ft_strcmp("exit", minishell->line) == 0)
+		{
+			ft_free_minishell(minishell, 1);
+			write(1, "exit\n", 5);
+			exit (0);
+		}
 		add_history(minishell->line);
 		check_line(minishell);
 		if (minishell->flag != 1)

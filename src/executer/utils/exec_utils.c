@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:39:37 by malena-b          #+#    #+#             */
-/*   Updated: 2024/06/27 13:08:54 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:37:18 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_get_exec_path(t_minishell *mshll, char *cmd)
 		free(exec_line);
 		exec_line = NULL;
 	}
-	ft_free_matrix(path_splitted);
+	ft_free_mat(path_splitted);
 	path_splitted = NULL;
 	return (NULL);
 }

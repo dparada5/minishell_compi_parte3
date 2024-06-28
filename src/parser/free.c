@@ -6,13 +6,13 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:50:58 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 14:56:00 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/27 12:01:41 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/minishell.h"
+#include "./../../inc/minishell.h"
 
-char	**ft_free_matrix(char **matrix)
+static char	**ft_free_matrix(char **matrix)
 {
 	int	i;
 
