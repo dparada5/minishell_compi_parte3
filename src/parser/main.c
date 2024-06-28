@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:40:10 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:44:00 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 14:25:30 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../minishell.h"
+#include "./../../inc/minishell.h"
 //912
 
 int	main(int argc, char **argv, char **env)

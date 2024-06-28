@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirecc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:50:53 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 11:14:16 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 14:26:04 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_token	*open_append(t_token *token, t_cmds *cmds, t_minishell *minishell)
 	if (cmds->fd_out < 0)
 		msj_error(ERROR_FD, minishell, 1);
 	cmds->flag = 0;
+	cmds->executor = 1;
 	return (token);
 }
 
@@ -32,7 +33,8 @@ t_token	*open_trunc(t_token *token, t_cmds *cmds, t_minishell *minishell)
 	cmds->fd_out = open(token->content, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (cmds->fd_out < 0)
 		msj_error(ERROR_FD, minishell, 1);
-	cmds->flag = 0;
+	cmds->flag = 2;
+	cmds->executor = 1;
 	return (token);
 }
 
@@ -44,7 +46,8 @@ t_token	*open_infile(t_token *token, t_cmds *cmds, t_minishell *minishell)
 	cmds->fd_in = open(token->content, O_RDONLY);
 	if (cmds->fd_in < 0)
 		msj_error(ERROR_FD, minishell, 1);
-	cmds->flag = 0;
+	cmds->flag = 2;
+	cmds->executor = 1;
 	return (token);
 }
 

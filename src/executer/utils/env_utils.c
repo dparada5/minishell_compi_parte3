@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 12:18:29 by malena-b          #+#    #+#             */
-/*   Updated: 2024/06/28 10:34:48 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 14:06:48 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ int	ft_change_envvar(t_env *env, char *var_name, char *new_value)
 {
 	t_env	*aux;
 
-	aux = env;
-	while (aux->key != var_name && aux)
-		aux = aux->next;
+	aux = ft_get_envvar(env, var_name);
+	// ft_putstr_fd(var_name, 2);
+	// ft_putstr_fd("\n", 2);
+	// ft_putstr_fd(new_value, 2);
+	// ft_putstr_fd("\n", 2);
 	if (!aux)
-		return (0);
+		return (0);//PORHACER otra vez lo de la mierda de control de errores
 	free (aux->content);
 	aux->content = ft_strdup(new_value);
 	return (1);
@@ -60,21 +62,18 @@ t_env	*new_env_exp(char *key, char *content)
 	if ((!env->content && content) || !env->key)
 		return (NULL);
 	env->next = NULL;
-	free(key);
 	return (env);
 }
 
-void	ft_save_env_mat(t_minishell *mshll)
+void	ft_save_env_mat(t_minishell *mshll, int i, int size)
 {
-	int		size;
-	int		i;
 	t_env	*env_runner;
 	char	*join_aux;
+	char	*aux;
 
 	if (mshll->env_mat)
 		ft_free_mat(mshll->env_mat);
 	mshll->env_mat = NULL;
-	size =0;
 	env_runner = mshll->env;
 	while (env_runner)
 	{
@@ -83,12 +82,12 @@ void	ft_save_env_mat(t_minishell *mshll)
 	}
 	env_runner = mshll->env;
 	mshll->env_mat = ft_calloc(size, sizeof(char *));
-	i = -1;
 	while (++i < size)
 	{
-		join_aux = ft_strjoin(env_runner->key, "=");
+		aux = ft_strdup(env_runner->key);
+		join_aux = ft_strjoin(aux, "=");
 		mshll->env_mat[i] = ft_strjoin(join_aux, env_runner->content);
-		free (join_aux);
+		// free (join_aux);
 		env_runner = env_runner->next;
 	}
 }

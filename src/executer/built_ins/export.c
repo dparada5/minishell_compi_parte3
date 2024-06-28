@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:55:44 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 11:04:54 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:35:11 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	ft_print_exp(t_env *exp)
 	runner = exp;
 	while (runner)
 	{
-		ft_printf("declare -x %s=\"%s\"\n", runner->key, runner->content);
+		ft_printf("declare -x %s=\"", runner->key, runner->content);
+		if (runner->content)
+			ft_printf("%s",runner->content);
+		ft_printf("\"\n");
 		runner = runner->next;
 	}
 }
@@ -69,6 +72,8 @@ void	ft_export_insert(t_minishell *mshll, char *str)
 		content = ft_substr(str, i + 1, ft_strlen(str) - (i + 1));
 		ft_lstadd_back_env(&(mshll->exp), new_env_exp(key, content));
 		ft_lstadd_back_env(&(mshll->env), new_env_exp(key, content));
-		ft_save_env_mat(mshll);
+		ft_save_env_mat(mshll, -1, 0);
+		free(key);
+		free(content);
 	}
 }

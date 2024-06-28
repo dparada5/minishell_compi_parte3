@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 09:37:30 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 12:47:26 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 12:52:48 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ t_env *aux_env, int *i)
 	if (line[*i] == '~')
 		line = ft_strdup("$HOME");
 	aux = get_var(line, i, *i, minishell);
-	ft_putstr_fd("aca\n", 2);
 	aux_env = ft_get_envvar(minishell->env, aux);
 	if (line[*i - 1] == '\\')
 		new_string = is_not_expandable(line, i - 1);

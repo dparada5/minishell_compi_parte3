@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
+#    By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 11:04:19 by dparada           #+#    #+#              #
-#    Updated: 2024/06/28 11:12:52 by dparada          ###   ########.fr        #
+#    Updated: 2024/06/28 14:25:08 by malena-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS 	= -Wall -Wextra -Werror -g
 LIBFT = lib/LIBFT
 SRC_DIR = src/
 OBJ_DIR = obj/
-MINISHELL_H = $(NAME).h
+MINISHELL_H = ./inc/$(NAME).h
 LIB = -lreadline
 
 MAGENTA = \033[35;1m

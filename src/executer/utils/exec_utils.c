@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:39:37 by malena-b          #+#    #+#             */
-/*   Updated: 2024/06/28 10:37:18 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:11:33 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ char	*ft_get_exec_path(t_minishell *mshll, char *cmd)
 	{
 		join_aux = ft_strjoin(path_splitted[i], "/");
 		exec_line = ft_strjoin(join_aux, cmd);
-		free(join_aux);
+		// free(join_aux);
 		join_aux = NULL;
 		if (access(exec_line, F_OK | X_OK) == 0)
 			return (exec_line);
 		free(exec_line);
 		exec_line = NULL;
 	}
-	ft_free_mat(path_splitted);
+	free(path_splitted);
 	path_splitted = NULL;
 	return (NULL);
 }

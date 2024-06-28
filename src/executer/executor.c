@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:56:13 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 11:15:56 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 14:36:15 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_kindergarden(t_minishell *mshll, t_cmds *cmd, int *pipe_fd)
 {
 	char	*exec_path;
 
-	if (!ft_strlen(cmd->cmds))
+	if (!ft_strlen(cmd->cmds) && cmd->flag == 1)
 		exit (0);//PORHACER comprobar si los hijos tiene que liberar la memoria de las estructuras o si eso es solo el padre
 	if (!cmd->index)
 		close(pipe_fd[0]);
@@ -61,8 +61,13 @@ void	ft_kindergarden(t_minishell *mshll, t_cmds *cmd, int *pipe_fd)
 	else
 		dup2(pipe_fd[1], 1);
 	exec_path = ft_get_exec_path(mshll, cmd->cmds);
-	ft_save_env_mat(mshll);
-	execve(exec_path, mshll->cmds->cmds_flags, mshll->env_mat);
+	ft_save_env_mat(mshll, -1, 0);
+	if (execve(exec_path, mshll->cmds->cmds_flags, mshll->env_mat) < 0)
+	{
+		msj_error("cmd not found\n", mshll, 2);
+		exit (0);
+	}
+	
 }
 
 void	ft_bedroom(t_minishell *mshll, int	pipes_left)
@@ -85,7 +90,8 @@ void	ft_bedroom(t_minishell *mshll, int	pipes_left)
 				return ;//PORHACER añadir gestión en este caso de error
 			if (pid == 0)
 				ft_kindergarden(mshll, runner, pipe_fd);
-			
+			else
+				waitpid(0, 0, 0);
 		}
 		runner = runner->next;
 		pipes_left--;
@@ -98,5 +104,6 @@ void	ft_executor(t_minishell *mshll)
 
 	pipes = ft_pipes_count(mshll);
 	ft_bedroom(mshll, pipes);
+	ft_free_minishell(mshll, 0);
 }
 

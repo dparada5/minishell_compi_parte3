@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:50:58 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 11:14:33 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 14:13:39 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	ft_lstclear_cmds(t_cmds *lst)
 	{
 		aux = lst;
 		lst = lst->next;
-		free(aux->cmds);
+		if (aux->cmds)
+			free(aux->cmds);
 		if (aux->fd_in != 0)
 			close(aux->fd_in);
 		if (aux->fd_out != 1)
@@ -43,7 +44,8 @@ void	ft_lstclear_cmds(t_cmds *lst)
 		if (aux->flag == 1)
 			unlink(".here_doc.tmp");
 		aux->cmds = NULL;
-		aux->cmds_flags = ft_free_matrix(aux->cmds_flags);
+		if (aux->cmds_flags)
+			aux->cmds_flags = ft_free_matrix(aux->cmds_flags);
 		free(aux);
 		aux = NULL;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:40:10 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 12:48:19 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 14:31:47 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	check_line(t_minishell *minishell)
 	states(minishell->line, minishell);
 	minishell->tokens = get_tokens(minishell->line, minishell);
 	check_expansion(minishell->tokens, minishell);
-	// printf_tokens(minishell->tokens);
+	//printf_tokens(minishell->tokens);
 	token_actions(minishell);
-	// printf_cmds(minishell->cmds);
+	//printf_cmds(minishell->cmds);
 }
 
 void	init_minishell(t_minishell *minishell)
@@ -49,7 +49,6 @@ void	init_minishell(t_minishell *minishell)
 			minishell->val_error = 0;
 			ft_executor(minishell);
 		}
-		ft_free_minishell(minishell, 0);
 		minishell->line = readline("minishell$ ");
 	}
 	rl_clear_history();

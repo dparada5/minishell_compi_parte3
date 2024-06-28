@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:29:02 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 10:44:35 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 14:33:48 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 // # include "./mshell_exec.h"
 # include <readline/readline.h>
 # include <readline/history.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+# include <signal.h>
 
 # define RST    "\033[0m"      /* Reset to default color */
 # define RED    "\033[1;31m"   /* Bold Red */
@@ -76,6 +79,7 @@ typedef struct s_cmds
 	int				fd_out;
 	int				index;
 	int				flag;
+	int				executor;
 	struct s_cmds	*next;
 }				t_cmds;
 
@@ -162,7 +166,7 @@ t_env	*ft_get_envvar(t_env *env, char *var_name);
 int		ft_change_envvar(t_env *env, char *var_name, char *new_value);
 void	ft_swap_envnodes(t_env *prev, t_env *act, t_env *next, t_env *last);
 t_env	*new_env_exp(char *key, char *content);
-void	ft_save_env_mat(t_minishell *mshll);
+void	ft_save_env_mat(t_minishell *mshll, int i, int size);
 
 //---------------------------------EXEC UTILS--------------------------------//
 char	*ft_get_exec_path(t_minishell *mshll, char *cmd);
