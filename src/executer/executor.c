@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:56:13 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 11:06:46 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 11:15:56 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void	ft_kindergarden(t_minishell *mshll, t_cmds *cmd, int *pipe_fd)
 		dup2(cmd->fd_out, 1);
 	else
 		dup2(pipe_fd[1], 1);
-	if (ft_check_for_builtins(mshll, cmd))
-		exit(0); //PORHACER comprobar si los hijos tiene que liberar la memoria de las estructuras o si eso es solo el padre
 	exec_path = ft_get_exec_path(mshll, cmd->cmds);
 	ft_save_env_mat(mshll);
 	execve(exec_path, mshll->cmds->cmds_flags, mshll->env_mat);
@@ -78,7 +76,7 @@ void	ft_bedroom(t_minishell *mshll, int	pipes_left)
 	while (pipes_left >= 0)
 	{
 		if (ft_check_for_builtins(mshll, runner))
-			;
+			;//PORHACER comprobar si los hijos tiene que liberar la memoria de las estructuras o si eso es solo el padre
 		else
 		{
 			pid = fork();

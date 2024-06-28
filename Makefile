@@ -6,7 +6,7 @@
 #    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 11:04:19 by dparada           #+#    #+#              #
-#    Updated: 2024/06/28 10:51:37 by dparada          ###   ########.fr        #
+#    Updated: 2024/06/28 11:12:52 by dparada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,21 +43,21 @@ SRC_FILES = executer/built_ins/cd \
 			executer/utils/general_utils \
 			executer/utils/tokens_utils \
 			executer/executor \
-			parser/cmds_create \
-			parser/cmds_utils \
-			parser/create_cmd_matrix \
-			parser/create_token \
-			parser/env \
-			parser/expand_types \
-			parser/expand \
-			parser/free \
+			parser/commands/cmds_create \
+			parser/commands/cmds_utils \
+			parser/commands/create_cmd_matrix \
+			parser/tokens/create_token \
+			parser/utils/env \
+			parser/tokens/expand_types \
+			parser/tokens/expand \
+			parser/utils/free \
 			parser/init \
-			parser/prints \
-			parser/redirecc \
-			parser/states \
-			parser/token_utils \
-			parser/tokens \
-			parser/utils \
+			parser/utils/prints \
+			parser/commands/redirecc \
+			parser/utils/states \
+			parser/tokens/token_utils \
+			parser/tokens/tokens \
+			parser/utils/utils \
 			parser/main
 			
 
