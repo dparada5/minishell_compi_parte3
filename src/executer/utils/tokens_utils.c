@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:56:09 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:04:05 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:34:57 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/mshell_exec.h"
+#include "./../../../inc/minishell.h"
 
 int	ft_pipes_count(t_minishell *mshll)
 {

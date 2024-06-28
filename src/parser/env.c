@@ -6,25 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:36:46 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:01:32 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:43:38 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../inc/minishell.h"
-
-t_env	*ft_get_envvar(t_env *env, char *var_name)
-{
-	t_env	*aux;
-
-	aux = env;
-	while (aux)
-	{
-		if (!ft_strncmp(aux->key, var_name, ft_strlen(aux->key)))
-			return (aux);
-		aux = aux->next;
-	}
-	return (NULL);
-}
 
 t_env	*new_env(char *key, char *content, t_minishell *minishell)
 {

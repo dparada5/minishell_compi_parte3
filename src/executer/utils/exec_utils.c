@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:39:37 by malena-b          #+#    #+#             */
-/*   Updated: 2024/06/27 12:08:46 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:37:18 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/mshell_exec.h"
+#include "./../../../inc/minishell.h"
 
 char	*ft_get_exec_path(t_minishell *mshll, char *cmd)
 {
@@ -18,7 +18,7 @@ char	*ft_get_exec_path(t_minishell *mshll, char *cmd)
 	t_env	*path_var;
 	char	**path_splitted;
 	char	*exec_line;
-	char	join_aux;
+	char	*join_aux;
 
 	path_var = ft_get_envvar(mshll->env, "PATH");
 	path_splitted = ft_split(path_var->content, ':');

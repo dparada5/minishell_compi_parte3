@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:55:51 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:08:01 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:34:45 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/mshell_exec.h"
+#include "./../../../inc/minishell.h"
 
 void	ft_check_and_delete(t_env **envxp, char *key)
 {

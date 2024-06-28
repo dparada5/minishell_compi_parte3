@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:55:24 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:03:37 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:34:22 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/mshell_exec.h"
+#include "./../../../inc/minishell.h"
 
 int	ft_cd_dir(char	*pre_path, char *end_path, t_env *env)
 {

@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:56:13 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:04:10 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:45:26 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/mshell_exec.h"
+#include "./../../inc/minishell.h"
 
 int	ft_check_for_builtins(t_minishell *mshll, t_cmds *cmd)
 {
@@ -28,7 +28,7 @@ int	ft_check_for_builtins(t_minishell *mshll, t_cmds *cmd)
 	else if (ft_strncmp(cmds_flags[0], "exit", len) == 0)
 		ft_exit(0, mshll);
 	else if (ft_strncmp(cmds_flags[0], "export", len) == 0 && !cmds_flags[1])
-		ft_export_print(mshll->exp);
+		ft_export_print(&mshll->exp, NULL, NULL, NULL);
 	else if (ft_strncmp(cmds_flags[0], "export", len) == 0 && cmds_flags[1])
 		ft_export_insert(mshll, cmds_flags[1]);
 	else if (ft_strncmp(cmds_flags[0], "pwd", len) == 0)
@@ -42,7 +42,7 @@ int	ft_check_for_builtins(t_minishell *mshll, t_cmds *cmd)
 
 //void	ft_factory(t_minishell *mshll, )
 
-int	ft_kindergarden(t_minishell *mshll, t_cmds *cmd, int *pipe_fd)
+void	ft_kindergarden(t_minishell *mshll, t_cmds *cmd, int *pipe_fd)
 {
 	char	*exec_path;
 

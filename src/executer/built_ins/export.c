@@ -6,16 +6,17 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:55:44 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/27 12:03:47 by dparada          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:35:48 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../../inc/mshell_exec.h"
+#include "./../../../inc/minishell.h"
 
 void	ft_print_exp(t_env *exp)
 {
 	t_env *runner;
 
+	runner = exp;
 	while (runner)
 	{
 		ft_printf("declare -x %s=\"%s\"\n", runner->key, runner->content);
@@ -23,16 +24,12 @@ void	ft_print_exp(t_env *exp)
 	}
 }
 
-void	ft_export_print(t_env **exp)
+void	ft_export_print(t_env **exp, t_env *prev_node, t_env *swap_aux, t_env *run)
 {
-	t_env	*prev_node;
-	t_env	*swap_aux;
-	t_env	*run;
-
 	run = *exp;
 	while (run)
 	{
-		if (ft_strncmp(run->content, run->next->content, ft_strlen(run->content)) > 0)
+		if (run->next && ft_strncmp(run->key, run->next->key, ft_strlen(run->key)) > 0)
 		{
 			if (!prev_node)
 			{
@@ -45,6 +42,11 @@ void	ft_export_print(t_env **exp)
 				ft_swap_envnodes(prev_node, run, run->next, run->next->next);
 			prev_node = NULL;
 			run = *exp;
+		}
+		else
+		{
+			prev_node = run;	
+			run = run->next;
 		}
 	}
 	ft_print_exp(*exp);
