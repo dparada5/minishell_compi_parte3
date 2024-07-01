@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:50:53 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 17:08:51 by dparada          ###   ########.fr       */
+/*   Updated: 2024/07/01 16:58:21 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_token	*open_append(t_token *token, t_cmds *cmds, t_minishell *minishell)
 			close(cmds->fd_out);
 		cmds->fd_out = open(token->content, O_RDWR | O_CREAT | O_APPEND, 0644);
 		if (cmds->fd_out < 0)
-			msj_error_fd(1, ERROR_FD, cmds, minishell);
+			msj_error_fd(2, ERROR_FD, cmds, minishell);
 		cmds->heredoc = 0;
 		cmds->executor = 1;
 	}
@@ -70,8 +70,7 @@ t_token	*open_infile(t_token *token, t_cmds *cmds, t_minishell *minishell)
 
 void	check_heredoc_line(char *line, t_minishell *minishell, int fd)
 {
-	ft_putstr_fd(expansion(line, minishell), fd);
-	ft_putstr_fd("\n", fd);
+	ft_putendl_fd(expansion(line, minishell), fd);
 	free(line);
 }
 

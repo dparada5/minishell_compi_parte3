@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
+/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:40:10 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 14:31:47 by malena-b         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:04:28 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,16 @@
 
 void	init_ev_exp(t_minishell *minishell, char **env)
 {
-	minishell->env = save_env(env, -1, minishell);
-	minishell->exp = save_env(env, -1, minishell);
+	if (env != NULL)
+	{
+		minishell->env = save_env(env, -1, minishell);
+		minishell->exp = save_env(env, -1, minishell);	
+	}
+	else
+	{
+		minishell->env = NULL;
+		minishell->exp = NULL;
+	}
 	minishell->val_error = 0;
 }
 
@@ -24,10 +32,10 @@ void	check_line(t_minishell *minishell)
 {
 	states(minishell->line, minishell);
 	minishell->tokens = get_tokens(minishell->line, minishell);
+	printf_tokens(minishell->tokens);
 	check_expansion(minishell->tokens, minishell);
-	//printf_tokens(minishell->tokens);
 	token_actions(minishell);
-	//printf_cmds(minishell->cmds);
+	// printf_cmds(minishell->cmds);
 }
 
 void	init_minishell(t_minishell *minishell)
@@ -46,9 +54,10 @@ void	init_minishell(t_minishell *minishell)
 		check_line(minishell);
 		if (minishell->flag != 1)
 		{
-			minishell->val_error = 0;
 			ft_executor(minishell);
+			minishell->val_error = 0;
 		}
+		ft_putnbr_fd(minishell->flag, 2);
 		minishell->line = readline("minishell$ ");
 	}
 	rl_clear_history();

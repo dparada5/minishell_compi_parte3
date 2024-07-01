@@ -6,11 +6,12 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 09:37:30 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 16:21:42 by dparada          ###   ########.fr       */
+/*   Updated: 2024/07/01 17:02:16 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../../inc/minishell.h"
+
 static char	*val_error(t_minishell *minishell, char *line, int *i, int l)
 {
 	char	*new_string;
@@ -73,7 +74,7 @@ t_env *aux_env, int *i)
 	char	*aux;
 	char	*new_string;
 
-	if (line[*i] == '~')
+	if (line[*i] == '~' && line[*i - 1] != '\\')
 		line = ft_strdup("$HOME");
 	aux = get_var(line, i, *i, minishell);
 	aux_env = ft_get_envvar(minishell->env, aux);
@@ -98,9 +99,16 @@ char	*expansion(char *line, t_minishell *minishell)
 	{
 		i = 0;
 		while (line[i])
-		{	
+		{	ft_putendl_fd(line, 2);
 			if (ft_strcmp(line, "~") == 0)
 				line = check_var(minishell, line, NULL, &i);
+			if (line[i] == '\\')
+			{
+				i++;
+				line = check_var(minishell, line, NULL, &i);
+			}
+			if (line[i] == '$' && line[i + 1] == '~')
+				i += 2;
 			if (line[i] == '$')
 				line = check_var(minishell, line, NULL, &i);
 			else

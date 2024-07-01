@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:56:13 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 17:10:03 by dparada          ###   ########.fr       */
+/*   Updated: 2024/07/01 16:21:31 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,23 @@ void	ft_kindergarden(t_minishell *mshll, t_cmds *cmd, int *pipe_fd)
 		close(pipe_fd[1]);
 	if (cmd->fd_in != 0)
 		dup2(cmd->fd_in, 0);
-	else
+	else if (cmd->index)
 		dup2(pipe_fd[0], 0);
 	if (cmd->fd_out != 1)
 		dup2(cmd->fd_out, 1);
-	else
+	else if (cmd->next)
 		dup2(pipe_fd[1], 1);
 	exec_path = ft_get_exec_path(mshll, cmd->cmds);
 	ft_save_env_mat(mshll, -1, 0);
-	if (execve(exec_path, mshll->cmds->cmds_flags, mshll->env_mat) < 0)
-	{
-		msj_error("cmd not found\n", mshll, 2);
-		exit (0);
-	}
-	
+	// dprintf(2, "%s\n", exec_path);
+	// write(0, "0\n", 2);
+	// write(1, "1\n", 2);
+	// write(2, "2\n", 2);
+	execve(exec_path, cmd->cmds_flags, 0);
+		// ft_putstr_fd(cmd->cmd_flag[0], 2);
+		// ft_putstr_fd("\n", 2);
+	msj_error("cmd not found\n", mshll, 2);
+	exit (0);
 }
 
 void	ft_bedroom(t_minishell *mshll, int	pipes_left)
@@ -75,9 +78,10 @@ void	ft_bedroom(t_minishell *mshll, int	pipes_left)
 	int		pipe_fd[2];
 	pid_t	pid;
 	t_cmds	*runner;
-
 	ft_set_cmds_index(mshll);
 	runner = mshll->cmds;
+	if (pipe(pipe_fd) == -1)
+		msj_error("pipe error\n", mshll, 1);
 	while (pipes_left >= 0)
 	{
 		if (ft_check_for_builtins(mshll, runner))
@@ -85,13 +89,18 @@ void	ft_bedroom(t_minishell *mshll, int	pipes_left)
 		else
 		{
 			pid = fork();
-			
 			if (pid == -1)
 				return ;//PORHACER añadir gestión en este caso de error
 			if (pid == 0)
 				ft_kindergarden(mshll, runner, pipe_fd);
 			else
-				waitpid(0, 0, 0);
+			{
+				close(pipe_fd[1]);
+				// write(0, "0\n", 2);
+				// write(1, "1\n", 2);
+				// write(2, "2\n", 2);
+				wait(0);
+			}
 		}
 		runner = runner->next;
 		pipes_left--;
