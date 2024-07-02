@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+         #
+#    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 11:04:19 by dparada           #+#    #+#              #
-#    Updated: 2024/06/28 14:25:08 by malena-b         ###   ########.fr        #
+#    Updated: 2024/07/02 19:18:50 by dparada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRC_FILES = executer/built_ins/cd \
 			parser/tokens/token_utils \
 			parser/tokens/tokens \
 			parser/utils/utils \
+			parser/utils/signals \
 			parser/main
 			
 

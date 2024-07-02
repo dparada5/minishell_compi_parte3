@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:40:10 by dparada           #+#    #+#             */
-/*   Updated: 2024/07/01 17:04:28 by dparada          ###   ########.fr       */
+/*   Updated: 2024/07/02 19:17:59 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	check_line(t_minishell *minishell)
 {
 	states(minishell->line, minishell);
 	minishell->tokens = get_tokens(minishell->line, minishell);
-	printf_tokens(minishell->tokens);
+	// printf_tokens(minishell->tokens);
 	check_expansion(minishell->tokens, minishell);
 	token_actions(minishell);
 	// printf_cmds(minishell->cmds);
@@ -41,6 +41,8 @@ void	check_line(t_minishell *minishell)
 void	init_minishell(t_minishell *minishell)
 {
 	minishell->line = readline("minishell$ ");
+	if (!minishell->line)
+		control_d(minishell);
 	while (minishell->line)
 	{
 		minishell->tokens = NULL;
@@ -57,8 +59,11 @@ void	init_minishell(t_minishell *minishell)
 			ft_executor(minishell);
 			minishell->val_error = 0;
 		}
-		ft_putnbr_fd(minishell->flag, 2);
+		// ft_putnbr_fd(minishell->flag, 2);
+		ft_free_minishell(minishell, 0);
 		minishell->line = readline("minishell$ ");
+		if (!minishell->line)
+			control_d(minishell);
 	}
 	rl_clear_history();
 }

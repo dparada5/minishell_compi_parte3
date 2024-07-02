@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:30:55 by dparada           #+#    #+#             */
-/*   Updated: 2024/07/01 16:49:04 by dparada          ###   ########.fr       */
+/*   Updated: 2024/07/02 15:38:15 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,7 @@ int	back_slash(char *line, t_token **token, int *i, int flag)
 	else if (line[*i] == '\\')
 	{
 		start = ++*i;
-		if (line[*i] == '~')
-			start--;
-		if (line[*i] == '$' && line[*i + 1] == '~')
-			(*i)++;
-		if (line[*i] == '$' )
+		if (line[*i] == '$' || line[*i] == '~')
 			start--;
 		error = create_token(token, T_W, ft_substr(line, start, ++*i - start), \
 		flag);

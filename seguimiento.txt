@@ -8,3 +8,9 @@ ejecutor:
 que si en el comando el cmds->error = 1 no hay que ejecutar
 
 revisar todas las expanciones
+
+pa cuando termina
+echo \$~
+$~
+echo \h~
+h~

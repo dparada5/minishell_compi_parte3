@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:02:54 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 17:11:26 by dparada          ###   ########.fr       */
+/*   Updated: 2024/07/02 15:38:26 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	msj_error(char *str, t_minishell *minishell, int val_error)
 	minishell->flag = 1;
 	minishell->val_error = val_error;
 }
-
 
 int	is_join(t_token *tokens)
 {

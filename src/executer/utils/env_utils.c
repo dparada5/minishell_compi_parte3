@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 12:18:29 by malena-b          #+#    #+#             */
-/*   Updated: 2024/07/01 10:25:52 by dparada          ###   ########.fr       */
+/*   Updated: 2024/07/02 14:15:49 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_env	*ft_get_envvar(t_env *env, char *var_name)
 	aux = env;
 	while (aux)
 	{
-		if (!ft_strncmp(aux->key, var_name, ft_strlen(aux->key)))
+		if (ft_strcmp(aux->key, var_name) == 0)
 			return (aux);
 		aux = aux->next;
 	}

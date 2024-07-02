@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:40:10 by dparada           #+#    #+#             */
-/*   Updated: 2024/07/01 15:36:23 by dparada          ###   ########.fr       */
+/*   Updated: 2024/07/02 18:10:36 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv, char **env)
 		if (!minishell)
 			msj_error(MALLOC_FAILED, minishell, 0);
 		init_ev_exp(minishell, env);
+		init_signal();
 		init_minishell(minishell);
 	}
 }

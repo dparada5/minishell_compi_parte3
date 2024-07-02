@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:50:53 by dparada           #+#    #+#             */
-/*   Updated: 2024/07/01 16:58:21 by dparada          ###   ########.fr       */
+/*   Updated: 2024/07/02 19:14:50 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_token	*here_doc(t_token *token, t_cmds *cmds, t_minishell *minishell)
 		while (1)
 		{
 			line = readline("> ");
-			if (ft_strcmp(line, token->content) == 0)
+			if (ft_strcmp(line, token->content) == 0 || !line)
 			{
 				free(line);
 				break ;

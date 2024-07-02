@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:29:02 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/28 17:05:23 by dparada          ###   ########.fr       */
+/*   Updated: 2024/07/02 19:18:22 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define ERROR_SQ	"unexpected EOF while looking for matching quote '''\n"
 # define ERROR_DQ	"unexpected EOF while looking for matching quote '\"'\n"
 # define MALLOC_FAILED "malloc failed.\n"
+
 
 typedef enum e_state_num
 {
@@ -105,8 +106,11 @@ typedef struct s_minishell
 	int			flag;
 }				t_minishell;
 
+extern int	g_value;
 
 //-------------------------PARSER--------------------------------------
+void	init_signal(void);
+void	control_d(t_minishell *minishell);
 void	init_ev_exp(t_minishell *minishell, char **env);
 void	init_minishell(t_minishell *minishell);
 //------------------variable expand--------------------------

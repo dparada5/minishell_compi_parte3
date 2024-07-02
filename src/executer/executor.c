@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:56:13 by dparada           #+#    #+#             */
-/*   Updated: 2024/07/01 16:21:31 by dparada          ###   ########.fr       */
+/*   Updated: 2024/07/02 15:35:50 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,5 @@ void	ft_executor(t_minishell *mshll)
 
 	pipes = ft_pipes_count(mshll);
 	ft_bedroom(mshll, pipes);
-	ft_free_minishell(mshll, 0);
 }
 
